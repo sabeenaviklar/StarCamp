@@ -1,0 +1,38 @@
+<!-- NOTE: success.length/error.length means (if it is) not empty -->
+
+
+<!-- </%  if(success && success.length) {%> 
+    <div class="alert alert-success alert-dimissible fade show" role="alert">
+        <strong> </%= success %> </strong>   
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </% } %>  -->
+
+   
+
+    <!-- </%  if(error && error.length) {%> 
+        <div class="alert alert-danger alert-dimissible fade show" role="alert">
+            <%= error %> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        </% } %>  -->
+
+        <!-- ////==========FOR SUCEESSFULLYYY======= -->
+        <%  if(success && success.length) {%> 
+       
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><%= success %></strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% } %> 
+        
+              <!-- ////==========FOR UNSUCEESSFULLYYY======= -->
+        <%  if(error && error.length) {%> 
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong><%= error %> !</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% } %> 
+
+    
+    -
