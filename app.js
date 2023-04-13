@@ -6,11 +6,12 @@ if (process.env.NODE_ENV !== "production") {
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+// uire('./utils/ExpressError');
+const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
-const ExpressError = require('./utils/ExpressError');
-const methodOverride = require('method-override');
+const ExpressError = reqOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
@@ -24,7 +25,10 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
-mongoose.connect(process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp', {
+const dbUrl = process.env.DB_URL;
+
+// mongoose.connect(process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp', {
+    mongoose.connect(dbUrl , {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -78,7 +82,7 @@ app.use(helmet({ crossOriginEmbedderPolicy: false }));
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
     "https://api.tiles.mapbox.com/",
-    "https://api.mapbox.com/",
+    "https://api.mapbox.com/",     
     "https://pixabay.com/photos/",
     "https://kit.fontawesome.com/",
     "https://cdnjs.cloudflare.com/",
@@ -90,7 +94,7 @@ const scriptSrcUrls = [
     "https://unsplash.com/s/photos/images",
     "https://www.istockphoto.com/",
     "https://pixabay.com/api/",
-    "https://cdn.pixabay.com/photo/2022/10/30/16/42/cat-7557859__340.jpg"
+    // "https://cdn.pixabay.com/photo/2022/10/30/16/42/cat-7557859__340.jpg"
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -114,7 +118,7 @@ const connectSrcUrls = [
     "https://*.tiles.mapbox.com",
     "https://api.mapbox.com",
     "https://events.mapbox.com",
-    "https://pixabay.com/photos/",
+    // "https://pixabay.com/photos/",
     "https://res.cloudinary.com/ddbtakrr5/",
     "https://www.istockphoto.com/",
     "https://pixabay.com/api/",
@@ -123,6 +127,8 @@ const connectSrcUrls = [
 ];
 const fontSrcUrls = [ "https://res.cloudinary.com/ddbtakrr/" ];
  
+
+//=======USING this arrays of helmet in this CODE
 app.use(
     helmet.contentSecurityPolicy({
         directives : {
@@ -187,6 +193,7 @@ app.use((err, req, res, next) => {
 })
 
 const port = process.env.PORT || 3000;
+// const port = 3001;
 app.listen(port, () => {
     console.log(`Serving on port ${[port]}`)
 })

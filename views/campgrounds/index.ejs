@@ -1,7 +1,9 @@
 
 
 <% layout('layouts/boilerplate')%>
-<div id="cluster-map"></div>
+
+
+<div id="cluster-map"></div>   <!-- //Just need to add this to make map appear Linked with app.css  -->
 <div class="container"></div>
             <!-- // MAP STYLE HAS BEEN SET IN APP.CSS -->
 <h1>All Campgrounds</h1>
@@ -26,6 +28,7 @@
                 <p class="card-text"><%= campground.description %></p>
                 <p class="card-text">
                     <small class="text-muted"><%= campground.location%></small>
+                    
                 </p>
                 <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View <%=campground.title%></a>
             </div>
